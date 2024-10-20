@@ -1,7 +1,7 @@
 {
   "name": "pcm-qr",
   "version": "1.0.0",
-  "description": "`qr.html` is a self contained website, that can generate QR codes via [nayuki's QR code generator library](https://github.com/nayuki/QR-Code-generator). Because it is fully self-contained, you can just download the file and open it on any computer that has a browser installed, no Internet connection is needed.",
+  "description": "pcm-qr generates QR codes with a standard logo.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

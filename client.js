@@ -19,8 +19,30 @@ const input_textarea = document.getElementById("input");
 const input_error = document.getElementById("input-error");
 
 const result = document.getElementById("result-div");
-const result_qrcode = document.getElementById("qrcode");
+const result_qrcode = document.getElementById("result-qrcode");
 const result_error = document.getElementById("result-error");
+
+const qrCode = new QRCodeStyling({
+    width: 300,
+    height: 300,
+    type: "svg",
+    data: "https://www.facebook.com/",
+    image: "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
+    dotsOptions: {
+        color: "#4267b2",
+        type: "rounded"
+    },
+    backgroundOptions: {
+        color: "#e9ebee",
+    },
+    imageOptions: {
+        crossOrigin: "anonymous",
+        margin: 20
+    }
+});
+console.log(qrCode)
+
+//qrCode.download({ name: "qr", extension: "svg" });
 
 // Size of the QR code in pixels. Set it to 0 to automatically fit the free space
 let QR_MIN_SIZE = get_or_default_int("QR_MIN_SIZE", 30); //in pixels
@@ -96,8 +118,9 @@ const updateQRCode = () => {
 
     try {
         //const qr_code_object = qrcodegen.QrCode.encodeText(text, ecc_level);
-        const qr_code_object = "the QR code SVG will go here"
-        result_qrcode.innerHTML = qr_code_object //toSvgString(qr_code_object, QR_BORDER_SIZE, "white", "black");
+        //const qr_code_object = "the QR code SVG will go here"
+        //result_qrcode.innerHTML = qr_code_object //toSvgString(qr_code_object, QR_BORDER_SIZE, "white", "black");
+        qrCode.append(result_qrcode);
     } catch (error) {
         showQrCodeGenerationError("Failed to generate the QR code! Please try a different input.");
     }
