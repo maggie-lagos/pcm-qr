@@ -80,8 +80,6 @@ const on_window_resize = () => {
 };
 
 const updateQRCode = () => {
-    const max_size_fit_window = Math.min(result_qr.clientWidth, result_qr.clientHeight, QR_MAX_SIZE);
-    const qr_size = Math.max(QR_MIN_SIZE, max_size_fit_window) - 10; // remove 2 * 5px for the paddings
     const text = input_textarea.value;
 
     if (!text) {
@@ -91,25 +89,23 @@ const updateQRCode = () => {
 
     try {
         qrCode = new QRCodeStyling({
-            width: 300,
-            height: 300,
+            width: 400,
+            height: 400,
             type: "svg",
             data: text,
-            image: "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
+            image: "https://pcm-maggie.s3.amazonaws.com/pcm-logo.png",
             dotsOptions: {
-                color: "#4267b2",
-                type: "rounded"
-            },
-            backgroundOptions: {
-                color: "#e9ebee",
+                color: "#471b12",
+                type: "square"
             },
             imageOptions: {
                 crossOrigin: "anonymous",
-                margin: 20
-            }
+                margin: 0
+            },
+            //saveAsBlob: true
         });
-        console.log(qrCode)
-        
+        //console.log(qrCode)
+
         result_error.style.display = "none";
         result_qr.innerHTML = "";
         qrCode.append(result_qr);
