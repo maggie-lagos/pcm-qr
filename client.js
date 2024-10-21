@@ -19,7 +19,6 @@ const result_msg = document.getElementById("result-msg");
 
 window.addEventListener("load", () => {
     result_msg.style.display = "none";
-    //generateQR()    TODO: make this gray at first
 })
 
 const updateResultMsg = (message, isErr) => {
