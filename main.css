@@ -24,18 +24,14 @@ header {
     padding: 5px;
 }
 
-header a, header .button {
+header a, header {
     color: lightgray;
     margin-right: 20px;
 }
 
-header .button {
+header button {
     cursor: pointer;
-    text-decoration: underline
-}
-
-.expand {
-    flex: 1;
+    margin-left: auto;
 }
 
 #text-and-qr {

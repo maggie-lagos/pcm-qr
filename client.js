@@ -13,6 +13,7 @@ const get_or_default_int = (name, default_value) => {
 }
 
 const header = document.getElementById("header");
+const download_btn = document.getElementById("download");
 const text_and_qr = document.getElementById("text-and-qr");
 
 const input_textarea = document.getElementById("input");
@@ -120,3 +121,20 @@ setTimeout(on_window_resize, 10);
 // Update the QR code whenever the text or the window size changes
 // Use max-width/height to keep the QR code div in square shape and allow the textarea to use the remaining space
 input_textarea.addEventListener("input", generateQR);
+
+download_btn.onclick = function() {
+    console.log("pushed it")
+
+    html2canvas(result, {
+        useCORS: true,
+        allowTaint: true,
+        logging: true,
+        removeContainer: true,
+    }).then(function(canvas) {
+        var imageURL = canvas.toDataURL("image/png");
+        let a = document.createElement("a");
+        a.href = imageURL;
+        a.download = "pcm-qr.png";
+        a.click();
+    });
+};
