@@ -25,12 +25,15 @@ const generateQR = () => {
 
     const qrSize = result_qr.offsetWidth/2;
     try {
+        // dummy param to avoid cache + CORS issues
+        let imgParam = `cachebuster=${Date.now()}`
+
         qrCode = new QRCodeStyling({
             width: qrSize,
             height: qrSize,
             type: "svg",
             data: text,
-            image: "https://pcm-maggie.s3.amazonaws.com/pcm-logo.png",
+            image: `https://pcm-maggie.s3.amazonaws.com/pcm-logo.png?${imgParam}`,
             dotsOptions: {
                 color: "#471b12",
                 type: "square"
